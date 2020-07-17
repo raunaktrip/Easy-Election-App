@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "658563786752",
+    "firebase_url": "https://easy-election-app-f783f.firebaseio.com",
+    "project_id": "easy-election-app-f783f",
+    "storage_bucket": "easy-election-app-f783f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658563786752:android:24db407b4fda1dc76ad0e5",
+        "android_client_info": {
+          "package_name": "com.example.easyelectionapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658563786752-6fcef38ac541ai5ha8v2tc3jervov5us.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAy1v4SBNnB2h9YKxhtH2cDQap2vuJkW28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658563786752-6fcef38ac541ai5ha8v2tc3jervov5us.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

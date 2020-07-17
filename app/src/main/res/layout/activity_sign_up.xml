@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity"
+    android:background="#f8bfa8">
+
+
+    <EditText
+        android:layout_width="230dp"
+        android:id="@+id/email"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="216dp"
+        android:hint="Email"
+
+        android:inputType="textEmailAddress"
+
+        />
+
+
+
+
+    <EditText
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:id="@+id/password"
+        android:layout_marginTop="292dp"
+        android:inputType="textPassword"
+        android:hint="Password " />
+
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/signUp"
+        android:layout_below="@+id/password"
+        android:padding="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="Sign Up" />
+    <TextView
+        android:id="@+id/sigIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already have an account? Sign In here"
+        android:layout_below="@+id/signUp"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"/>
+
+
+
+
+
+
+</RelativeLayout>
