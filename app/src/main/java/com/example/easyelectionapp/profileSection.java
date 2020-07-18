@@ -44,6 +44,7 @@ public class profileSection extends AppCompatActivity {
             public void onClick(View v) {
                 firebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                finish();
             }
         });
 

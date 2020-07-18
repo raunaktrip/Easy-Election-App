@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
        });
        if(firebaseAuth.getCurrentUser()!=null){
            startActivity(new Intent(getApplicationContext(),profileSection.class));
+           finish();
        }
 
 
@@ -88,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     if(task.isSuccessful()){
                         Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(),profileSection.class));
+                        finish();
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"Login failed!,Please try again",Toast.LENGTH_SHORT).show();
