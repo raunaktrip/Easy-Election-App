@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f8bfa8"
+    tools:context=".profile_setup"
+    android:orientation="vertical">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:padding="20dp">
+       <ImageView
+           android:id="@+id/avatar"
+           android:src="@drawable/avatardefault_92824"
+           android:layout_height="120dp"
+           android:layout_width="120dp"
+           android:layout_centerHorizontal="true"/>
+
+       <TextView
+           android:id="@+id/tv1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Complete your Profile"
+           android:layout_below="@+id/avatar"
+           android:layout_centerHorizontal="true"
+           android:padding="20dp"
+           android:textSize="20dp"
+         />
+
+       <EditText
+           android:id="@+id/fullName"
+           android:layout_width="300dp"
+
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/tv1"
+           android:layout_centerHorizontal="true"
+           android:layout_margin="10dp"
+           android:padding="20dp"
+           android:hint="Full name"/>
+       <EditText
+           android:id="@+id/userName"
+           android:layout_width="300dp"
+           android:layout_height="wrap_content"
+           android:layout_margin="10dp"
+           android:layout_below="@+id/fullName"
+           android:layout_centerHorizontal="true"
+           android:padding="20dp"
+           android:hint="User name"/>
+       <EditText
+           android:id="@+id/phone"
+           android:layout_width="300dp"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/userName"
+           android:layout_margin="10dp"
+           android:layout_centerHorizontal="true"
+           android:padding="20dp"
+           android:hint="Phone no."/>
+
+       <Button
+           android:id="@+id/btn_submit"
+           android:layout_width="200dp"
+           android:layout_height="wrap_content"
+           android:text="Submit"
+           android:layout_centerHorizontal="true"
+           android:layout_below="@+id/phone"
+           android:background="#58a0f1"/>
+
+   </RelativeLayout>
+
+</LinearLayout>

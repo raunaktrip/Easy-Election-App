@@ -64,7 +64,7 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
 
-                            startActivity(new Intent(getApplicationContext(),profileSection.class));
+                            startActivity(new Intent(getApplicationContext(),profile_setup.class));
                             finish();
                         }
                         if(!task.isSuccessful()){
