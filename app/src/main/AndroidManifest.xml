@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".profile_setup"></activity>
+        <activity android:name=".roomActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".passwordReset" />
+        <activity android:name=".homeActivity" />
         <activity android:name=".profileSection" />
+        <activity android:name=".profile_setup" />
+        <activity android:name=".passwordReset" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".launcher">
             <intent-filter>

@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
            }
        });
        if(firebaseAuth.getCurrentUser()!=null){
-           startActivity(new Intent(getApplicationContext(),profileSection.class));
+           startActivity(new Intent(getApplicationContext(),homeActivity.class));
            finish();
        }
 
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(),profileSection.class));
+                        startActivity(new Intent(getApplicationContext(),homeActivity.class));
                         finish();
                     }
                     else{

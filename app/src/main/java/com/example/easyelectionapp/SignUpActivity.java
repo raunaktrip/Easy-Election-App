@@ -67,13 +67,12 @@ public class SignUpActivity extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(),profile_setup.class));
                             finish();
                         }
-                        if(!task.isSuccessful()){
-                            if(task.getException() instanceof FirebaseAuthUserCollisionException){
-                                Toast.makeText(getApplicationContext(),"User Already exists ,try to Login",Toast.LENGTH_SHORT).show();
+                        if(!task.isSuccessful()) {
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                Toast.makeText(getApplicationContext(), "User Already exists ,try to Login", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "E-mail or password is wrong", Toast.LENGTH_SHORT).show();
                             }
-                        }
-                        else {
-                            Toast.makeText(getApplicationContext(),"E-mail or password is wrong",Toast.LENGTH_SHORT).show();
                         }
 
                     }
