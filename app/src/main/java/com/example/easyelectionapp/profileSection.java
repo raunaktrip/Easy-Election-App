@@ -100,7 +100,15 @@ public class profileSection extends AppCompatActivity {
     }
 });
 
+
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        detachListener();
+    }
+
     public void detachListener() {
         // [START detach_listener]
         Query query = fstore.collection("users");

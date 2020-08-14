@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,6 +34,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -50,7 +52,8 @@ public class homeActivity extends AppCompatActivity {
 
 
     private RecyclerView recyclerView;
-   private FirestoreRecyclerAdapter adapter;
+
+   private ListAdapter adapter;
     FirebaseAuth firebaseAuth;
     String myText ,pwd,roomId;
     ImageView btnplus;
@@ -88,29 +91,32 @@ public class homeActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         //query
-        Query query= firebaseFirestore.collection("users").document(userId).collection("rooms");
+        Query query= firebaseFirestore.collection("users").document(eml).collection("rooms");
 
         FirestoreRecyclerOptions<ListItem> options= new FirestoreRecyclerOptions.Builder<ListItem>()
                 .setQuery(query,ListItem.class)
                 .build();
-        adapter= new FirestoreRecyclerAdapter<ListItem, ListViewHolder>(options) {
-            @NonNull
-            @Override
-            public ListViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-                View view=LayoutInflater.from(viewGroup.getContext()).inflate(list_item_layout,viewGroup,false);
-                return new ListViewHolder(view);
-            }
-
-            @Override
-            protected void onBindViewHolder(@NonNull ListViewHolder listViewHolder, int i, @NonNull ListItem listItem) {
-                listViewHolder.roomName.setText(listItem.getRoomName());
-                listViewHolder.electionCount.setText(listItem.getElectionCount());
-                listViewHolder.memberCount.setText(listItem.getMemberCount());
-            }
-        };
+        adapter= new ListAdapter(options);
 
 
         recyclerView.setAdapter(adapter);
+        adapter.setItemClickListener(new ListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                String id = documentSnapshot.getId();
+                String roomname=documentSnapshot.getData().get("roomName").toString();
+
+
+
+                Intent intent = new Intent(getApplicationContext(),roomActivity.class);
+                intent.putExtra("roomid",id);
+                intent.putExtra("roomname",roomname);
+                startActivity(intent);
+
+            }
+        });
+
+
 
         //onclick for logout button
         btnnav.setOnClickListener(new View.OnClickListener() {
@@ -162,7 +168,7 @@ public class homeActivity extends AppCompatActivity {
                         roomId=roomid.getText().toString();
 
                         // adding new room
-                       final DocumentReference documentReference= firebaseFirestore.collection("users").document(userId).collection("rooms").document(roomId);
+                       final DocumentReference documentReference= firebaseFirestore.collection("users").document(eml).collection("rooms").document(roomId);
                         Map<String,Object> user= new HashMap<>();
                         user.put("roomName",myText);
                         user.put("memberCount","1");
@@ -198,20 +204,8 @@ public class homeActivity extends AppCompatActivity {
 
     }
 
-    private class ListViewHolder extends RecyclerView.ViewHolder {
 
 
-        private TextView roomName;
-        private TextView electionCount;
-        private  TextView memberCount;
-        public ListViewHolder(@NonNull View itemView) {
-            super(itemView);
-            roomName= itemView.findViewById(R.id.roomName);
-            electionCount=itemView.findViewById(R.id.electionCount);
-            memberCount = itemView.findViewById(R.id.memberCount);
-
-        }
-    }
 
     @Override
     protected void onStop() {
