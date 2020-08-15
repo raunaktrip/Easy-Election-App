@@ -31,6 +31,7 @@ import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -73,13 +74,16 @@ public class roomActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
+
 
         //Query
         Query query =fStore.collection("users").document(email).collection("rooms").document(roomId).collection("elections");
         FirestoreRecyclerOptions<ListItem_room> options=new FirestoreRecyclerOptions.Builder<ListItem_room>()
                 .setQuery(query,ListItem_room.class)
                 .build();
+
+
+
 
                 firestoreRecyclerAdapter= new ElectionAdapter(options);
         recyclerView.setAdapter(firestoreRecyclerAdapter);
@@ -143,7 +147,15 @@ public class roomActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        firestoreRecyclerAdapter.startListening();
+    }
 
-
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        firestoreRecyclerAdapter.stopListening();
+    }
 }

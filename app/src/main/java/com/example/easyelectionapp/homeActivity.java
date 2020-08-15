@@ -88,7 +88,7 @@ public class homeActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
+
 
         //query
         Query query= firebaseFirestore.collection("users").document(eml).collection("rooms");

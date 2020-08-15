@@ -30,11 +30,11 @@ public class ElectionAdapter extends FirestoreRecyclerAdapter<ListItem_room,Elec
     @Override
     public ListHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(itemlist_room, viewGroup, false);
-        return new ElectionAdapter.ListHolder(view);
+        return new ListHolder(view);
 
     }
 
-    class ListHolder extends RecyclerView.ViewHolder{
+    public class ListHolder extends RecyclerView.ViewHolder{
         private TextView electionName;
 
         public ListHolder(@NonNull View itemView) {
